@@ -1,0 +1,62 @@
+<section class="artistpage">
+  <div class="search">
+    <h1>BioBot 1 printer </h1>
+    <label>search: </label>
+    <input ng-model="query" placeholder="Search Filename of the input print GCODE file" autofocus>
+
+    
+
+   
+   
+  </div>
+  <ul class="artistlist">
+    <li class="artist cf" ng-repeat="item in artists | filter: query | limitTo: 5">
+
+      <div class="info">
+
+     <ul>
+      <li>
+        <h2>1.USER_INFO</h2>
+        <p>Serial number of the customer's BioBot 1</p>
+        <h3><span class="black"> serial:</span>{{item["user_info"].serial}}</h3>
+        <p>Customer's email address</p>
+        <h3> <span class="black"> email:</span>{{item["user_info"].email}}</h3>
+        <h2>2.PRINT_INFO</h2>
+        <h5>files</h5>
+        <p>Filename of the input print GCODE file</p>
+        <h3><span class="black"> input:</span>{{item["print_info"]["files"].input}}</h3>
+         <p>Filename of the post-processed print GCODE file.</p>
+        <h3> <span class="black"> output:</span>{{item["print_info"]["files"].output}}</h3>
+        <h5>pressure</h5>
+        <p>Pressure of the first extruder at time of print.
+        <h3><span class="black"> extruder1:</span>{{item["print_info"]["pressure"].extruder1}}</h3>
+        <p>Pressure of the second extruder at the time of print.</p>
+        <h3><span class="black"> extruder2:</span>{{item["print_info"]["pressure"].extruder2}}</h3>
+        <h5>crosslinking</h5>
+        <p>If photocrosslinking was used during this print.</p>
+        <h3><span class="black"> cl_enabled:</span>{{item["print_info"]["crosslinking"].cl_enabled}}</h3>
+        <p>Duration of photocrosslinking using during this print in ms.</p>
+        <h3><span class="black"> cl_duration:</span> {{item["print_info"]["crosslinking"].cl_duration}}ms</h3>
+        <p>Percent intensity of light used in photocrosslinking.</p>
+        <h3><span class="black"> cl_intensity:</span>{{item["print_info"]["crosslinking"].cl_intensity}}</h3>
+        <h5>resolution</h5>
+        <p>Number of layers in this print.</p>
+         <h3><span class="black"> layerNum:</span>{{item["print_info"]["resolution"].layerNum}}</h3>
+        <p>Height of each layer in mm.</p>
+        <h3><span class="black"> layerHeight:</span>{{item["print_info"]["resolution"].layerHeight}}mm</h3>
+         <h5>wellplate</h5>
+        <p>Wellplate type used for the print</p>
+        <h3>{{item["print_info"].wellplate}}</h3>
+         <h5>livePercent</h5>
+         <p>Percent of final print determined to be dead through live/dead imaging</p> 
+        <h3><span class="black"> livePercent:</span> {{item["print_data"].deadPercent}}%</h3>
+        <p>Measure of final print structural rigidity measured in kPa.</p> 
+        <h3><span class="black"> elasticity:</span>{{item["print_data"].elasticity}}kPa</h3>
+        <p>Percent of final print determined to be dead through live/dead imaging.</p> 
+        <h3><span class="black"> livePercent:</span> {{item["print_data"].livePercent}}</h3>
+        
+   </li>
+      </div>
+    </li>
+  </ul>  
+</section>
